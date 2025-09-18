@@ -12,24 +12,14 @@ public class DatePickerDemo {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://jqueryui.com/datepicker/");
-
-        
         WebElement iframe = driver.findElement(By.className("demo-frame"));
         driver.switchTo().frame(iframe);
-
-        
         WebElement dateField = driver.findElement(By.id("datepicker"));
         dateField.click();
-
-        Thread.sleep(1000); // small wait for calendar to be visible
-
-        
+        Thread.sleep(1000);
         WebElement nextButton = driver.findElement(By.xpath("//a[@title='Next']"));
         nextButton.click();
-
         Thread.sleep(1000); 
-
-        
         List<WebElement> allDates = driver.findElements(By.xpath("//a[@class='ui-state-default']"));
         for (WebElement date : allDates) {
             if (date.getText().equals("22")) {
@@ -37,10 +27,7 @@ public class DatePickerDemo {
                 break;
             }
         }
-
-        
         System.out.println("Selected Date: " + dateField.getAttribute("value"));
-
         driver.quit();
     }
 }
